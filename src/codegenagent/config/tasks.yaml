@@ -1,0 +1,31 @@
+explain_generated_code:
+  description: >
+    Review the following code and explain what it does in simple terms.
+    Include inline comments, function/class docstrings, and a short README-style summary
+    describing the purpose of the code, how it works, and how to use it.
+
+    Code to explain:
+    {code}
+
+  expected_output: >
+    Review and explain the code in a beginner-friendly and easy-to-read format.
+
+    The output should include:
+
+    1. Inline comments for each significant line or block, written in simple language
+    2. Docstrings for all functions and classes, clearly describing:
+       - What they do
+       - What parameters they take (if any)
+       - What they return
+    3. A clean, well-structured README-style explanation that includes:
+       - What the code does
+       - Who it is for (intended users)
+       - How it works (a summary of the logic and flow)
+       - How to run or use it
+       - Example usage or expected output, if applicable
+    4. The README should be visually clear and structured like a tutorial:
+       - Use headings, bullet points, and spacing to make it easy to follow
+       - Focus on clarity and simplicity
+
+  output_file: report.md
+  agent_id: code_explainer
