@@ -61,4 +61,17 @@ To run the code explainer, you can either use the provided `run.py` script or ex
    ```
 
    This will create a `report.md` file in the root directory containing the explanation of the code.
+## Customization
+
+You can customize the `CodeGenAgent` in the following ways:
+
+1.  **Provide Different Code to Explain:** The easiest way to customize the agent is to give it different code to explain. When you run `python src/codegenagent/main.py`, it will prompt you to paste the code you want explained.
+
+2.  **Modify the Agent's Personality and Instructions:** You can change the agent's behavior by editing the `config/agents.yaml` and `config/tasks.yaml` files.
+
+    *   `config/agents.yaml`: This file defines the agent's role, goal, and backstory. You can edit these to change the agent's personality and how it approaches the task.
+    *   `config/tasks.yaml`: This file defines the specific tasks the agent performs. You can edit the `description` to change the instructions for the agent.
+
+3.  **Add New Agents and Tasks:** For more advanced customization, you can add new agents and tasks to the crew in `src/codegenagent/crew.py`. This would allow you to add new capabilities to your agent, such as suggesting improvements to the code or generating documentation in different formats.
+
 
