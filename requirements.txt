@@ -1,4 +1,4 @@
 crewai[tools]>=0.152.0,<1.0.0
 streamlit
 python-dotenv
-pysqlite3-binary
+pysqlite3-binary>=0.5.1
