@@ -1,2 +1,4 @@
 libsqlite3-dev
 sqlite3
+wget
+build-essential
