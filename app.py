@@ -1,10 +1,3 @@
-try:
-    __import__('pysqlite3')
-    import sys
-    sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
-except ImportError:
-    pass
-
 import streamlit as st
 
 def set_custom_theme():
@@ -36,7 +29,7 @@ def main():
     st.title("CodeGenAgent Frontend")
     st.header("Your AI-powered code explainer")
 
-    st.info("Please make sure you have a `.env` file in the root of this project with your `GEMINI_API_KEY` set.")
+    
 
     code = st.text_area("Paste your code here", height=200)
 
@@ -44,7 +37,7 @@ def main():
         if code:
             with st.spinner("Generating explanation... Please wait."):
                 try:
-                    from src.codegenagent.main import run as run_crew
+                    from src.codereview.main import run as run_crew
                     run_crew(code)
                     with open("report.md", "r") as f:
                         report = f.read()

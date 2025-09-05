@@ -1,77 +1,83 @@
-# CodeGenAgent
+# CodeReview AI
 
-CodeGenAgent is a Python project that uses the `crewAI` framework to automatically explain and document code. It defines a "crew" of AI agents, with the primary agent being a `code_explainer` that analyzes a given code snippet and generates a detailed explanation.
-<img width="1397" height="649" alt="image" src="https://github.com/user-attachments/assets/60a43910-0996-41d7-9545-249e7e7403f1" />
-
+An AI-powered code explanation tool built with CrewAI and Streamlit.
 
 ## Features
 
-- **Code Explanation:** Automatically generates explanations for code snippets.
-- **Markdown Output:** Saves the explanation in a `report.md` file.
-- **Extensible:** Built with `crewAI`, making it easy to add new agents and tasks.
+- 🤖 AI-powered code analysis and explanation
+- 🎨 Dark theme UI with red accents
+- 📝 Generates detailed markdown reports
+- 🚀 Built with CrewAI for intelligent agent workflows
 
-## Workflow
+## Setup
 
-```
-+-----------------+      +---------------------+      +--------------------+      +----------------+
-|                 |      |                     |      |                    |      |                |
-|  User's Code    +----->|    CodeGenAgent     +----->|  Code Explainer    +----->|   report.md    |
-|   (main.py)     |      |      (crewAI)       |      |       Agent        |      |  (Markdown)    |
-|                 |      |                     |      |                    |      |                |
-+-----------------+      +---------------------+      +--------------------+      +----------------+
-```
-
-## Installation
-
-1. **Clone the repository:**
+1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/codegenagent.git
-   cd codegenagent
+   git clone <your-repo-url>
+   cd CodeReview-1
    ```
 
-2. **Create a virtual environment and install dependencies:**
+2. **Install dependencies**
    ```bash
-   python -m venv .venv
-   source .venv/bin/activate  # On Windows, use `.venv\Scripts\activate`
-   pip install -r requirements.txt
+   # Using uv (recommended)
+   uv sync
+   
+   # Or using pip
+   pip install -e .
    ```
+
+3. **Set up environment variables**
+   Create a `.env` file in the root directory:
+   ```env
+   GEMINI_API_KEY=your_gemini_api_key_here
+   ```
+   
+   Get your Gemini API key from [Google AI Studio](https://makersuite.google.com/app/apikey)
 
 ## Usage
 
-To run the code explainer, you can either use the provided `run.py` script or execute the `main` module directly.
+### Run the Streamlit App
+```bash
+streamlit run app.py
+```
 
-1. **Set up your environment variables:**
+### Run the Crew Directly
+```bash
+python src/codereview/main.py
+```
 
-   Create a `.env` file in the root directory of the project and add the following lines:
+## Project Structure
 
-   ```
-   MODEL=gemini/gemini-1.5-flash
-   GEMINI_API_KEY=your_gemini_api_key
-   ```
+```
+CodeReview-1/
+├── src/codereview/          # Main package
+│   ├── main.py             # Entry point
+│   ├── crew.py             # CrewAI crew definition
+│   └── config/             # Agent and task configurations
+├── app.py                  # Streamlit web interface
+├── pyproject.toml          # Project configuration
+└── README.md              # This file
+```
 
-   Replace `your_gemini_api_key` with your actual Gemini API key.
+## How It Works
 
-2. **Modify the code to be explained:**
+1. **Input**: Paste your code into the Streamlit interface
+2. **Processing**: CrewAI agents analyze and explain the code
+3. **Output**: Detailed explanation saved as `report.md`
 
-   Open `src/codegenagent/main.py` and replace the example code in the `code` variable with the code you want to explain.
+## Requirements
 
-3. **Run the agent:**
-   ```bash
-   python src/codegenagent/main.py
-   ```
+- Python 3.10+
+- Gemini API key
+- Dependencies listed in `pyproject.toml`
 
-   This will create a `report.md` file in the root directory containing the explanation of the code.
-## Customization
+## Contributing
 
-You can customize the `CodeGenAgent` in the following ways:
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
 
-1.  **Provide Different Code to Explain:** The easiest way to customize the agent is to give it different code to explain. When you run `python src/codegenagent/main.py`, it will prompt you to paste the code you want explained.
+## License
 
-2.  **Modify the Agent's Personality and Instructions:** You can change the agent's behavior by editing the `config/agents.yaml` and `config/tasks.yaml` files.
-
-    *   `config/agents.yaml`: This file defines the agent's role, goal, and backstory. You can edit these to change the agent's personality and how it approaches the task.
-    *   `config/tasks.yaml`: This file defines the specific tasks the agent performs. You can edit the `description` to change the instructions for the agent.
-
-3.  **Add New Agents and Tasks:** For more advanced customization, you can add new agents and tasks to the crew in `src/codegenagent/crew.py`. This would allow you to add new capabilities to your agent, such as suggesting improvements to the code or generating documentation in different formats.
-
-
+MIT License - see LICENSE file for details

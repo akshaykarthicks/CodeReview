@@ -5,20 +5,23 @@ import warnings
 from dotenv import load_dotenv
 from datetime import datetime
 
-from codegenagent.crew import Codegenagent
+try:
+    from .crew import Codereview
+except ImportError:
+    from crew import Codereview
 
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 
 def run(code: str):
     """
-    Run the Codegenagent crew.
+    Run the Codereview crew.
     """
     load_dotenv()
     inputs = {
         'code': code,
     }
     print("--------------------------start--------------------------")
-    result = Codegenagent().crew().kickoff(inputs=inputs)
+    result = Codereview().crew().kickoff(inputs=inputs)
 
     print("--------------------------end--------------------------")
     return result

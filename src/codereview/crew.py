@@ -7,8 +7,8 @@ from typing import List
 # https://docs.crewai.com/concepts/crews#example-crew-class-with-decorators
 
 @CrewBase
-class Codegenagent():
-    """Codegenagent crew"""
+class Codereview():
+    """Codereview crew"""
 
     agents_config = 'config/agents.yaml'
     tasks_config = 'config/tasks.yaml'
@@ -33,7 +33,7 @@ class Codegenagent():
 
     @crew
     def crew(self) -> Crew:
-        """Creates the Codegenagent crew"""
+        """Creates the Codereview crew"""
         # To learn how to add knowledge sources to your crew, check out the documentation:
         # https://docs.crewai.com/concepts/knowledge#what-is-knowledge
 

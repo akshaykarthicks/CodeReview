@@ -1,22 +1,21 @@
 [project]
-name = "codegenagent"
+name = "codereview"
 version = "0.1.0"
-description = "CodeGenAgent using crewAI"
+description = "CodeReview using crewAI"
 authors = [{ name = "Your Name", email = "you@example.com" }]
 requires-python = ">=3.10,<3.14"
 dependencies = [
     "crewai[tools]>=0.152.0,<1.0.0",
     "streamlit",
-    "python-dotenv",
-    "pysqlite3-binary"
+    "python-dotenv"
 ]
 
 [project.scripts]
-codegenagent = "codegenagent.main:run"
-run_crew = "codegenagent.main:run"
-train = "codegenagent.main:train"
-replay = "codegenagent.main:replay"
-test = "codegenagent.main:test"
+codereview = "codereview.main:run"
+run_crew = "codereview.main:run"
+train = "codereview.main:train"
+replay = "codereview.main:replay"
+test = "codereview.main:test"
 
 [build-system]
 requires = ["hatchling"]
