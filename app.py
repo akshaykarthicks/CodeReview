@@ -8,7 +8,7 @@ except ImportError:
     pass
 
 import streamlit as st
-
+import sqlite3
 def set_custom_theme():
     st.set_page_config(layout="wide", page_title="CodeGenAgent Frontend")
     custom_css = """
