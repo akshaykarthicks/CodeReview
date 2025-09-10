@@ -1,70 +1,75 @@
 ```python
-def find_duplicates(nums):
-    """
-    Finds and returns a list of duplicate numbers in a given list.
+# app2.py
+# This script uses Streamlit to create a simple stock picker web application.
 
-    Args:
-        nums: A list of numbers.
+import streamlit as st  # Import the Streamlit library for creating web apps
 
-    Returns:
-        A list containing only the duplicate numbers from the input list.  Returns an empty list if there are no duplicates.
-    """
-    seen = set()  # Use a set to efficiently track numbers we've seen
-    duplicates = []  # Initialize an empty list to store duplicates
+# Title of the application
+st.title("Simple Stock Picker")
 
-    for num in nums:  # Iterate through each number in the input list
-        if num in seen:  # Check if the number is already in the 'seen' set
-            duplicates.append(num)  # If it's already seen, it's a duplicate, add it to the duplicates list
-        else:
-            seen.add(num)  # If it's not seen, add it to the 'seen' set
+# Function to get stock recommendations (replace with your actual logic)
+def get_stock_recommendations(num_recommendations):
+  """
+  Generates a list of recommended stocks.  This is a placeholder; 
+  replace with your actual stock recommendation algorithm.
 
-    return duplicates  # Return the list of duplicate numbers
+  Args:
+    num_recommendations: The number of stock recommendations to generate.
+
+  Returns:
+    A list of strings, where each string is a stock symbol (e.g., ["AAPL", "MSFT"]).
+  """
+  # Placeholder - replace this with your stock picking logic
+  recommendations = ["AAPL", "MSFT", "GOOG", "AMZN", "TSLA"]  
+  return recommendations[:num_recommendations]
+
+# Get user input for the number of recommendations
+num_recommendations = st.number_input("How many stock recommendations would you like?", min_value=1, max_value=10, value=5)
+
+# Generate and display recommendations
+if st.button("Get Recommendations"): # Button to trigger recommendation generation.
+  recommendations = get_stock_recommendations(num_recommendations) # Get the recommendations
+  st.write("Recommended Stocks:") # Display the title
+  st.write(recommendations) # Display the list
+
 
 ```
 
-# README: Duplicate Number Finder
+```markdown
+# Simple Stock Picker App using Streamlit
 
-This Python code helps you identify duplicate numbers within a list.  It's designed to be easy to use, even if you're new to programming.
+This document explains how to use the simple stock picker application built with Streamlit.  This app provides a basic interface for generating stock recommendations.
 
-## What it does
 
-The code takes a list of numbers as input and returns a new list containing only the numbers that appear more than once in the original list.
+## What the code does
 
-## Who it's for
+This Streamlit application allows users to input the desired number of stock recommendations and receive a list of suggested stock symbols.  The current implementation uses placeholder data; you'll need to replace the placeholder recommendation logic with your own stock selection algorithm.
 
-This code is useful for anyone working with numerical data who needs to quickly find duplicate entries.  It's particularly helpful for data cleaning or analysis tasks.
+## Who is it for?
+
+This app is intended for anyone interested in exploring basic Streamlit applications or as a starting point for building a more sophisticated stock recommendation system.
+
 
 ## How it works
 
-The code uses a set called `seen` to keep track of numbers encountered so far. A set is a data structure that only stores unique values.
-
-1. **Initialization:** It starts with an empty set (`seen`) and an empty list (`duplicates`).
-2. **Iteration:** It iterates through each number in the input list (`nums`).
-3. **Duplicate Check:** For each number, it checks if the number is already present in the `seen` set.
-   - If the number is in `seen`, it means it's a duplicate, so it's added to the `duplicates` list.
-   - If the number is not in `seen`, it's added to the `seen` set to mark it as encountered.
-4. **Return Value:** Finally, it returns the `duplicates` list, which contains all the duplicate numbers found.
-
-## How to use it
-
-1. **Copy the code:** Copy the `find_duplicates` function from above.
-2. **Prepare your data:** Create a list of numbers. For example: `my_numbers = [1, 2, 3, 2, 4, 1, 5, 6, 3]`
-3. **Call the function:** Pass your list to the `find_duplicates` function: `duplicate_numbers = find_duplicates(my_numbers)`
-4. **View the results:** The `duplicate_numbers` variable will now contain a list of the duplicate numbers: `[1, 2, 3]`
-
-## Example
-
-```python
-my_numbers = [1, 2, 3, 2, 4, 1, 5, 6, 3]
-duplicates = find_duplicates(my_numbers)
-print(f"The duplicate numbers are: {duplicates}")  # Output: The duplicate numbers are: [1, 2, 3]
-
-empty_list = []
-duplicates = find_duplicates(empty_list)
-print(f"The duplicate numbers are: {duplicates}") #Output: The duplicate numbers are: []
+1. **User Input:** The user specifies the number of stock recommendations they want (between 1 and 10).
+2. **Recommendation Generation:** When the user clicks the "Get Recommendations" button, the `get_stock_recommendations` function is called.  Currently, this function returns a predefined list of stock symbols.  **You should replace this function with your own algorithm to generate actual stock recommendations based on your criteria (e.g., using financial data, machine learning models, etc.).**
+3. **Output:** The application displays the generated list of recommended stock symbols.
 
 
-no_duplicates_list = [1,2,3,4,5]
-duplicates = find_duplicates(no_duplicates_list)
-print(f"The duplicate numbers are: {duplicates}") # Output: The duplicate numbers are: []
+## How to run it
+
+1. **Prerequisites:** You need to have Streamlit installed. If not, install it using  `pip install streamlit`
+2. **Run the app:** Navigate to the directory containing `app2.py` in your terminal and run the command `streamlit run app2.py`.
+3. **Interact:**  The application will open in your web browser. You can then enter the number of recommendations and click the button.
+
+
+## Example Usage
+
+1. Run the app as described above.
+2. Enter "3" in the input field for the number of recommendations.
+3. Click the "Get Recommendations" button.
+4. The app will display a list similar to this: `['AAPL', 'MSFT', 'GOOG']` (This might vary slightly depending on the placeholder data).
+
+**Important:** Remember to replace the placeholder `get_stock_recommendations` function with your actual stock picking logic.  This example provides only a basic structure; it does not include any real-world financial analysis.
 ```
