@@ -8,7 +8,8 @@ dependencies = [
     "crewai[tools]>=0.152.0,<1.0.0",
     "streamlit",
     "python-dotenv",
-    "pysqlite3-binary"
+    "pysqlite3-binary",
+    "pygments>=2.18.0,<3.0.0"
 ]
 
 [project.scripts]
